@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MohammedSarjun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" type="image/png" href="ms.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f0e6cc;
+        --warm-white: #faf4e8;
+        --tan: #d4b483;
+        --rust: #7a3b1e;
+        --brown: #3e1f0d;
+        --gold: #b8860b;
+        --olive: #556b2f;
+        --ink: #1a0f06;
+        --muted: #8b6f4e;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Libre Baskerville", Georgia, serif;
+        min-height: 100vh;
+        cursor: crosshair;
+      }
+
+      body::after {
+        content: "";
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+      }
+
+      /* ── LEFT PANEL ── */
+      .left {
+        background: var(--brown);
+        color: var(--cream);
+        padding: 56px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .left::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -55deg,
+          transparent,
+          transparent 28px,
+          rgba(255, 255, 255, 0.018) 28px,
+          rgba(255, 255, 255, 0.018) 29px
+        );
+        pointer-events: none;
+      }
+
+      .left::after {
+        content: "M";
+        position: absolute;
+        bottom: -60px;
+        right: -30px;
+        font-family: "Playfair Display", serif;
+        font-size: 380px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.03);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .edition-tag {
+        font-family: "Special Elite", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+        color: var(--tan);
+        text-transform: uppercase;
+        margin-bottom: 48px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .edition-tag::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: var(--tan);
+        opacity: 0.6;
+      }
+
+      .hero-name {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 6vw, 5.4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--warm-white);
+        letter-spacing: -0.02em;
+        margin-bottom: 18px;
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--tan);
+        display: block;
+        font-size: 0.55em;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        margin-bottom: 4px;
+      }
+
+      .tagline {
+        font-size: 1rem;
+        line-height: 1.75;
+        color: #c8b090;
+        max-width: 340px;
+        margin-top: 24px;
+        font-style: italic;
+      }
+      .tagline strong {
+        color: var(--tan);
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      /* Find Me section on left */
+      .find-me-section {
+        margin-top: 36px;
+      }
+      .left-section-label {
+        font-family: "Special Elite", monospace;
+        font-size: 0.58rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--tan);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.8;
+      }
+      .left-section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--tan);
+        opacity: 0.3;
+      }
+
+      .find-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        color: #c8b090;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+        gap: 12px;
+      }
+      .find-row:first-of-type {
+        border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      }
+      .find-row:hover {
+        color: var(--warm-white);
+        padding-left: 6px;
+      }
+      .find-row-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .find-icon {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(212, 180, 131, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--tan);
+        flex-shrink: 0;
+      }
+      .find-icon svg {
+        width: 13px;
+        height: 13px;
+      }
+      .find-title {
+        font-family: "Playfair Display", serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--warm-white);
+      }
+      .find-sub {
+        font-family: "Special Elite", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+        color: #9a7f5e;
+        margin-top: 1px;
+      }
+      .find-badge {
+        font-family: "Special Elite", monospace;
+        font-size: 0.52rem;
+        letter-spacing: 0.1em;
+        border: 1px solid rgba(212, 180, 131, 0.4);
+        color: var(--tan);
+        padding: 2px 7px;
+      }
+
+      /* status pill */
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 7px 14px;
+        font-family: "Special Elite", monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        color: #9eb890;
+        margin-top: 32px;
+        width: fit-content;
+      }
+      .pulse {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #7ab870;
+        box-shadow: 0 0 6px #7ab870;
+        animation: pulse 2.2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.25;
+        }
+      }
+
+      /* ── RIGHT PANEL ── */
+      .right {
+        background: var(--warm-white);
+        padding: 56px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .right::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10%;
+        bottom: 10%;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--tan) 30%,
+          var(--tan) 70%,
+          transparent
+        );
+        opacity: 0.3;
+      }
+
+      .masthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--ink);
+        margin-bottom: 6px;
+        font-family: "Special Elite", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+      }
+      .masthead-title {
+        font-family: "Playfair Display", serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+
+      .thin-rule {
+        height: 1px;
+        background: var(--ink);
+        margin-bottom: 28px;
+        opacity: 0.2;
+      }
+
+      .section-label {
+        font-family: "Special Elite", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--rust);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--tan);
+        opacity: 0.5;
+      }
+
+      .about-text {
+        font-size: 0.9rem;
+        line-height: 1.85;
+        color: #2e1a0a;
+        columns: 2;
+        column-gap: 24px;
+        margin-bottom: 28px;
+      }
+      .about-text p + p {
+        text-indent: 1.2em;
+      }
+      .drop-cap::first-letter {
+        font-family: "Playfair Display", serif;
+        font-size: 3.6rem;
+        font-weight: 900;
+        float: left;
+        line-height: 0.78;
+        padding-right: 8px;
+        padding-top: 6px;
+        color: var(--rust);
+      }
+
+      .specs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .spec-tag {
+        border: 1px solid var(--tan);
+        padding: 5px 13px;
+        font-family: "Special Elite", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        color: var(--rust);
+        text-transform: uppercase;
+      }
+
+      /* ── PROJECTS SECTION ── */
+      .projects-strip {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 28px;
+      }
+      .project-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 14px 0;
+        border-bottom: 1px dashed rgba(100, 60, 20, 0.2);
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+          background 0.15s,
+          padding-left 0.2s;
+        gap: 12px;
+      }
+      .project-row:first-child {
+        border-top: 1px dashed rgba(100, 60, 20, 0.2);
+      }
+      .project-row:hover {
+        background: rgba(180, 130, 70, 0.06);
+        padding-left: 8px;
+      }
+      .project-row-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        flex: 1;
+      }
+      .project-icon {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--tan);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--rust);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .project-icon svg {
+        width: 15px;
+        height: 15px;
+      }
+      .project-info {
+        flex: 1;
+      }
+      .project-title {
+        font-family: "Playfair Display", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--brown);
+        margin-bottom: 2px;
+      }
+      .project-desc {
+        font-family: "Libre Baskerville", serif;
+        font-size: 0.72rem;
+        line-height: 1.55;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 6px;
+      }
+      .project-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .project-tag {
+        font-family: "Special Elite", monospace;
+        font-size: 0.52rem;
+        letter-spacing: 0.08em;
+        color: var(--rust);
+        border: 1px solid rgba(122, 59, 30, 0.3);
+        padding: 2px 7px;
+        text-transform: uppercase;
+      }
+      .project-badge {
+        font-family: "Special Elite", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+        background: var(--rust);
+        color: var(--cream);
+        padding: 3px 8px;
+        white-space: nowrap;
+        align-self: flex-start;
+        margin-top: 2px;
+      }
+
+      /* contact area */
+      .contact-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 20px;
+        background: var(--brown);
+        margin-top: auto;
+        flex-wrap: wrap;
+      }
+      .contact-email {
+        font-family: "Special Elite", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: var(--tan);
+      }
+      .connect-btn {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1rem;
+        background: transparent;
+        border: 1px solid var(--tan);
+        color: var(--cream);
+        padding: 8px 22px;
+        cursor: pointer;
+        letter-spacing: 0.04em;
+        transition:
+          background 0.2s,
+          color 0.2s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .connect-btn:hover {
+        background: var(--tan);
+        color: var(--brown);
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 16px;
+        font-family: "Special Elite", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      /* Animations */
+      .left-top,
+      .find-me-section,
+      .status-pill,
+      .right-top,
+      .projects-strip,
+      .contact-row,
+      .footer-row {
+        opacity: 0;
+        animation: rise 0.9s ease forwards;
+      }
+      .left-top {
+        animation-delay: 0.05s;
+      }
+      .find-me-section {
+        animation-delay: 0.22s;
+      }
+      .status-pill {
+        animation-delay: 0.38s;
+      }
+      .right-top {
+        animation-delay: 0.15s;
+      }
+      .projects-strip {
+        animation-delay: 0.38s;
+      }
+      .contact-row {
+        animation-delay: 0.52s;
+      }
+      .footer-row {
+        animation-delay: 0.62s;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .left {
+          padding: 44px 28px;
+          min-height: auto;
+        }
+        .right {
+          padding: 44px 28px;
+        }
+        .about-text {
+          columns: 1;
+        }
+        .left::after {
+          font-size: 220px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- LEFT -->
+      <div class="left">
+        <div class="left-top">
+          <div class="edition-tag">Portfolio — Vol. I</div>
+          <div class="hero-name">
+            <em>Hi, I'm</em>
+            Mohammed<br />Sarjun.
+          </div>
+          <p class="tagline">
+            Crafting <strong>Backend Systems</strong> &amp;
+            <strong>DevOps-driven Web Applications</strong> with a fullstack
+            sensibility and an eye for <strong>refined design</strong>.
+          </p>
+        </div>
+
+        <div class="find-me-section">
+          <div class="left-section-label">Find Me</div>
+
+          <a href="https://github.com/Mhmdsarju" class="find-row">
+            <div class="find-row-left">
+              <div class="find-icon">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="find-title">GitHub</div>
+                <div class="find-sub">Source repositories</div>
+              </div>
+            </div>
+            <span class="find-badge">View →</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/mhmd-sarju/" class="find-row">
+            <div class="find-row-left">
+              <div class="find-icon">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="find-title">LinkedIn</div>
+                <div class="find-sub">Professional network</div>
+              </div>
+            </div>
+            <span class="find-badge">View →</span>
+          </a>
+
+          <a
+            href="https://drive.google.com/file/d/19P7VC1Tc29ASYvkNE5hWjfybS7200PsS/view?usp=sharing"
+            class="find-row"
+          >
+            <div class="find-row-left">
+              <div class="find-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="find-title">Résumé</div>
+                <div class="find-sub">View credentials</div>
+              </div>
+            </div>
+            <span class="find-badge">View →</span>
+          </a>
+        </div>
+
+        <div class="status-pill">
+          <span class="pulse"></span>
+          SYSTEM.STATUS // ONLINE
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+        <div class="right-top">
+          <div class="masthead">
+            <span>Est. Kanyakumari, 2026</span>
+            <span class="masthead-title">The Engineer's Dispatch</span>
+            <span id="ts" style="font-size: 0.58rem">—</span>
+          </div>
+          <div class="thin-rule"></div>
+
+          <div class="section-label">About</div>
+          <div class="about-text">
+            <p class="drop-cap">
+              I'm a software engineer specializing in backend systems and
+              DevOps, with a full-stack perspective on building scalable web
+              applications.
+            </p>
+            <p>
+              I combine strong technical foundations with a focus on clean
+              design — crafting systems that are efficient, reliable, and
+              intuitive to use.
+            </p>
+          </div>
+
+          <div class="specs">
+            <span class="spec-tag">MERN Stack</span>
+            <span class="spec-tag">Backend Engineering</span>
+            <span class="spec-tag">UI Engineering</span>
+            <span class="spec-tag">DevOps & Cloud</span>
+            <span class="spec-tag">System Design</span>
+            <span class="spec-tag">Scalable Architecture</span>
+            <span class="spec-tag">API Design</span>
+          </div>
+
+          <div class="section-label">Selected Work</div>
+          <div class="projects-strip">
+            <a href="https://www.quizee.online/" class="project-row">
+              <div class="project-row-left">
+                <div class="project-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                    />
+                  </svg>
+                </div>
+                <div class="project-info">
+                  <div class="project-title">Quizee</div>
+                  <div class="project-desc">
+                    Quizeee is an online quiz platform to test knowledge with
+                    real-time scoring.
+                  </div>
+                  <div class="project-tags">
+                    <span class="project-tag">React.js</span>
+                    <span class="project-tag">Node.js</span>
+                    <span class="project-tag">MongoDB</span>
+                    <span class="project-tag">WebSocket</span>
+                    <span class="project-tag">AWS</span>
+                    <span class="project-tag">Nginx</span>
+                  </div>
+                </div>
+              </div>
+              <span class="project-badge">View →</span>
+            </a>
+
+            <a href="#" class="project-row">
+              <div class="project-row-left">
+                <div class="project-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <div class="project-info">
+                  <div class="project-title">Evalora-AI(Coming Soon)</div>
+                  <div class="project-desc">
+                    Evalora-AI is an AI mock interview platform that helps users
+                    improve their interview skills.
+                  </div>
+                  <div class="project-tags">
+                    <span class="project-tag">MERN</span>
+                    <span class="project-tag">Docker</span>
+                    <span class="project-tag">Socket.io</span>
+                    <span class="project-tag">Ollama</span>
+                    <span class="project-tag">Oracle</span>
+                    <span class="project-tag">Elevenlabs</span>
+                  </div>
+                </div>
+              </div>
+              <span class="project-badge">View →</span>
+            </a>
+
+            <!-- <a href="#" class="project-row">
+              <div class="project-row-left">
+                <div class="project-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                    />
+                  </svg>
+                </div>
+                <div class="project-info">
+                  <div class="project-title">Project Three-(Coming soon)</div>
+                  <div class="project-desc">
+                    A brief description of the project — what it does and the
+                    problem it solves.
+                  </div>
+                  <div class="project-tags">
+                    <span class="project-tag">AWS</span>
+                    <span class="project-tag">Kubernetes</span>
+                    <span class="project-tag">CI/CD</span>
+                  </div>
+                </div>
+              </div>
+              <span class="project-badge">View →</span>
+            </a> -->
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-row">
+            <span class="contact-email">mhmdsarju@gmail.com</span>
+            <a
+              href="mailto:mhmdsarju@gmail.com?subject=Let's%20Connect&body=Hi%20Sarju,%0A"
+              class="connect-btn"
+            >
+              Let's Connect
+            </a>
+          </div>
+          <div class="footer-row">
+            <span>© 2026 Mohammed Sarjun</span>
+            <span id="timestamp">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function tick() {
+        const t =
+          new Date().toLocaleTimeString("en-US", { hour12: false }) +
+          " GMT+5:30";
+        document.getElementById("timestamp").textContent = t;
+        document.getElementById("ts").textContent =
+          new Date().toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+      }
+      tick();
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>
